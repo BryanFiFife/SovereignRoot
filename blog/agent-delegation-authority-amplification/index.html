@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="How to keep child-agent delegation from amplifying authority. Attenuation-only semantics and the root ceiling that prevents scope creep.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Agent delegation and authority amplification: how to stop scope creep — SovereignRoot">
+  <meta property="og:description" content="Child agents can silently amplify authority. Attenuation-only delegation and a root ceiling keep scope creep in check.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/blog/agent-delegation-authority-amplification/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent delegation and authority amplification">
+  <meta name="twitter:description" content="Child agents can silently amplify authority. Attenuation-only delegation and a root ceiling keep scope creep in check.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/blog/agent-delegation-authority-amplification/">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <title>Agent delegation and authority amplification — SovereignRoot</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Agent delegation and authority amplification: how to stop scope creep",
+    "description": "Child agents can silently amplify authority. Attenuation-only delegation and a root ceiling keep scope creep in check.",
+    "datePublished": "2026-08-13",
+    "publisher": {"@type": "Organization", "name": "SovereignRoot", "url": "https://sovereignroot.pages.dev/"},
+    "mainEntityOfPage": "https://sovereignroot.pages.dev/blog/agent-delegation-authority-amplification/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../../" aria-label="SovereignRoot home">
+        <img src="../../assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="../../#generator">Generator</a>
+        <a href="../../#verify">Verify</a>
+        <a href="../../#protocol">Protocol</a>
+        <a href="../../#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">SovereignRoot blog</div>
+        <h1>Agent delegation and authority amplification: how to stop scope creep</h1>
+        <p class="hero-copy">The most dangerous failure in multi-agent systems isn't a single bad action — it's a child agent silently inheriting more authority than it should.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <h2>The amplification problem</h2>
+        <p>When an agent delegates to a child agent, the child needs some authority to do its job. But if that authority isn't bounded, a chain of delegations can silently <strong>amplify</strong> — each child inheriting a little more than its parent intended.</p>
+        <p>This is how a "harmless" sub-task becomes a system-level action nobody approved.</p>
+        <h2>Attenuation-only delegation</h2>
+        <p>The rule that prevents this is simple and strict:</p>
+        <pre>Child authority ⊆ Parent authority ∩ Root allowed authority</pre>
+        <p>A delegation that amplifies authority must be <strong>denied</strong>. A child agent may only ever receive a subset of what its parent could do — never more.</p>
+        <h2>Why a root ceiling matters</h2>
+        <p>Parent/child attenuation alone isn't enough. If the top-level agent has too much authority, the whole tree inherits it. You need a <strong>root ceiling</strong> that caps the entire delegation tree — a boundary that no child, at any depth, can exceed.</p>
+        <p>That's the role of a signed <code>sovereignty.json</code>: a persistent, human-owned ceiling above every grant and every delegation chain.</p>
+        <h2>The invariant</h2>
+        <pre>Effective authority = delegated authority ∩ SovereignRoot allowed authority</pre>
+        <p>Decision precedence: <code>DENY &gt; REQUIRE_APPROVAL &gt; ALLOW</code>. A downstream grant can never override a root deny.</p>
+        <h2>Build the ceiling</h2>
+        <p>SovereignRoot is a working protocol for a portable, cryptographically signed root policy. Generate yours locally — no account, no upload, no backend.</p>
+        <p><a class="button primary" href="../../#generator">Generate your root policy</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="../../"><img src="../../assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="../../protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="../../protocol/sovereignty.schema.json">JSON Schema</a><a href="../../docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="../../docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="../../README.md">Package README</a><a href="../../reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+      <div><b>Built by</b><a href="https://bryansmall.pages.dev" target="_blank" rel="noopener">Bryan Small</a><span>Applied AI builder, Scotland</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+  <script src="../../js/sovereignroot.bundle.js"></script>
+</body>
+</html>

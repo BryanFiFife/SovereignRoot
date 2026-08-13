@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="How to sign JSON documents in the browser with Web Crypto: ECDSA P-256, RFC 8785 canonicalization, JWK thumbprints, and encrypted key export.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Signing JSON in the browser with Web Crypto — SovereignRoot">
+  <meta property="og:description" content="ECDSA P-256, RFC 8785 canonicalization, JWK thumbprints, and encrypted key export — a practical guide to local-first document signing.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/blog/signing-json-in-browser-web-crypto/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Signing JSON in the browser with Web Crypto">
+  <meta name="twitter:description" content="ECDSA P-256, RFC 8785 canonicalization, JWK thumbprints, and encrypted key export.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/blog/signing-json-in-browser-web-crypto/">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <title>Signing JSON in the browser with Web Crypto — SovereignRoot</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Signing JSON in the browser with Web Crypto",
+    "description": "ECDSA P-256, RFC 8785 canonicalization, JWK thumbprints, and encrypted key export — a practical guide to local-first document signing.",
+    "datePublished": "2026-08-13",
+    "publisher": {"@type": "Organization", "name": "SovereignRoot", "url": "https://sovereignroot.pages.dev/"},
+    "mainEntityOfPage": "https://sovereignroot.pages.dev/blog/signing-json-in-browser-web-crypto/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../../" aria-label="SovereignRoot home">
+        <img src="../../assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="../../#generator">Generator</a>
+        <a href="../../#verify">Verify</a>
+        <a href="../../#protocol">Protocol</a>
+        <a href="../../#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">SovereignRoot blog</div>
+        <h1>Signing JSON in the browser with Web Crypto</h1>
+        <p class="hero-copy">A practical, dependency-free guide to signing a JSON document entirely in the browser — so the private key never leaves the device.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <h2>Why sign in the browser?</h2>
+        <p>For a local-first tool, the private key should never touch a server. Web Crypto lets you generate keys, sign documents and verify signatures entirely in the browser — no backend, no key upload, no third-party dependency.</p>
+        <h2>The pieces you need</h2>
+        <ul>
+          <li><strong>Key generation:</strong> ECDSA P-256 via <code>crypto.subtle.generateKey</code>.</li>
+          <li><strong>Canonicalization:</strong> RFC 8785 (JCS) so the exact bytes you hash match what a verifier hashes.</li>
+          <li><strong>Digest:</strong> SHA-256 of the canonical UTF-8 payload.</li>
+          <li><strong>Signature:</strong> ECDSA-SHA256, base64url encoded.</li>
+          <li><strong>Identity:</strong> RFC 7638 JWK thumbprint → RFC 9278 thumbprint URI.</li>
+          <li><strong>Key export:</strong> encrypt the private JWK with PBKDF2 + AES-256-GCM before download.</li>
+        </ul>
+        <h2>The canonicalization trap</h2>
+        <p>JSON object key order is not guaranteed. If you hash the raw JSON, a verifier that re-serializes differently gets a different digest. RFC 8785 canonicalization fixes this — it produces a deterministic byte representation so both sides hash the same thing.</p>
+        <h2>Never sign secrets</h2>
+        <p>A signed document is portable and tamper-evident, but it's not a secret store. Keep passwords, API keys, tokens and private keys out of the signed payload.</p>
+        <h2>See it working</h2>
+        <p>SovereignRoot is a working implementation of exactly this — a local-first generator and verifier built on Web Crypto. Try it, or read the reference code.</p>
+        <p><a class="button primary" href="../../#generator">Try the generator</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="../../"><img src="../../assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="../../protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="../../protocol/sovereignty.schema.json">JSON Schema</a><a href="../../docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="../../docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="../../README.md">Package README</a><a href="../../reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+      <div><b>Built by</b><a href="https://bryansmall.pages.dev" target="_blank" rel="noopener">Bryan Small</a><span>Applied AI builder, Scotland</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+  <script src="../../js/sovereignroot.bundle.js"></script>
+</body>
+</html>
