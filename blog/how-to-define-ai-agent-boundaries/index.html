@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="How to define the boundaries your AI agents must never cross. A practical guide to deny-overrides, require-approval, and attenuation-only policy semantics.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="How to define AI agent boundaries that survive model changes — SovereignRoot">
+  <meta property="og:description" content="A practical guide to deny-overrides, require-approval, and attenuation-only policy semantics for autonomous AI agents.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/blog/how-to-define-ai-agent-boundaries/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to define AI agent boundaries that survive model changes">
+  <meta name="twitter:description" content="A practical guide to deny-overrides, require-approval, and attenuation-only policy semantics.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/blog/how-to-define-ai-agent-boundaries/">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <title>How to define AI agent boundaries that survive model changes — SovereignRoot</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to define AI agent boundaries that survive model changes",
+    "description": "A practical guide to deny-overrides, require-approval, and attenuation-only policy semantics for autonomous AI agents.",
+    "datePublished": "2026-08-13",
+    "publisher": {"@type": "Organization", "name": "SovereignRoot", "url": "https://sovereignroot.pages.dev/"},
+    "mainEntityOfPage": "https://sovereignroot.pages.dev/blog/how-to-define-ai-agent-boundaries/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../../" aria-label="SovereignRoot home">
+        <img src="../../assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="../../#generator">Generator</a>
+        <a href="../../#verify">Verify</a>
+        <a href="../../#protocol">Protocol</a>
+        <a href="../../#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">SovereignRoot blog</div>
+        <h1>How to define AI agent boundaries that survive model changes</h1>
+        <p class="hero-copy">Your AI can change. Your boundaries shouldn't. Here's how to write a root policy that stays above models, vendors, prompts and delegation chains.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <h2>Start with the ceiling, not the grant</h2>
+        <p>Most agent authorization systems answer "what may the agent do?" SovereignRoot answers a different question: "what must it <strong>never</strong> do?" That ceiling is what survives change.</p>
+        <h2>Three effects, one precedence</h2>
+        <ul>
+          <li><code>deny</code> — the action must never execute;</li>
+          <li><code>require_approval</code> — hold until fresh human approval;</li>
+          <li><code>allow</code> — the root does not prohibit it.</li>
+        </ul>
+        <p>When rules conflict: <code>DENY &gt; REQUIRE_APPROVAL &gt; ALLOW</code>.</p>
+        <h2>Protect the root itself</h2>
+        <p>A conforming generator always emits hard-deny rules that prevent an agent from modifying the policy, disabling enforcement, accessing the signing key, weakening security controls, or amplifying its own authority.</p>
+        <h2>Attenuation only</h2>
+        <p>Child agents may be allowed, but their effective authority must be a subset of both their parent and the active root. A delegation that amplifies authority must be denied.</p>
+        <h2>Keep secrets out</h2>
+        <p>Never put passwords, API keys, tokens, seed phrases or private keys in a <code>sovereignty.json</code>. It is a policy document, not a secret store.</p>
+        <p><a class="button primary" href="../../#generator">Build your root policy</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="../../"><img src="../../assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="../../protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="../../protocol/sovereignty.schema.json">JSON Schema</a><a href="../../docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="../../docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="../../README.md">Package README</a><a href="../../reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+      <div><b>Built by</b><a href="https://bryansmall.pages.dev" target="_blank" rel="noopener">Bryan Small</a><span>Applied AI builder, Scotland</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+  <script src="../../js/sovereignroot.bundle.js"></script>
+</body>
+</html>

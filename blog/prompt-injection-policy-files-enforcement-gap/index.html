@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Why prompt injection alone can't be stopped by a policy file, and what actually can. The honest case for pre-action enforcement points.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Prompt injection, policy files, and the enforcement gap — SovereignRoot">
+  <meta property="og:description" content="A policy file in a prompt is advisory, not enforcement. Here's the gap and what closes it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/blog/prompt-injection-policy-files-enforcement-gap/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prompt injection, policy files, and the enforcement gap">
+  <meta name="twitter:description" content="A policy file in a prompt is advisory, not enforcement. Here's the gap and what closes it.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/blog/prompt-injection-policy-files-enforcement-gap/">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <title>Prompt injection, policy files, and the enforcement gap — SovereignRoot</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Prompt injection, policy files, and the enforcement gap",
+    "description": "A policy file in a prompt is advisory, not enforcement. Here's the gap and what closes it.",
+    "datePublished": "2026-08-13",
+    "publisher": {"@type": "Organization", "name": "SovereignRoot", "url": "https://sovereignroot.pages.dev/"},
+    "mainEntityOfPage": "https://sovereignroot.pages.dev/blog/prompt-injection-policy-files-enforcement-gap/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../../" aria-label="SovereignRoot home">
+        <img src="../../assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="../../#generator">Generator</a>
+        <a href="../../#verify">Verify</a>
+        <a href="../../#protocol">Protocol</a>
+        <a href="../../#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">SovereignRoot blog</div>
+        <h1>Prompt injection, policy files, and the enforcement gap</h1>
+        <p class="hero-copy">Putting a policy in a prompt is not the same as enforcing it. Here's the gap, and what actually closes it.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <h2>The gap</h2>
+        <p>Prompt injection works by getting the model to act on instructions it shouldn't. A policy file placed in the prompt is itself just more text the model may or may not follow. That is <strong>advisory</strong>, not enforcement.</p>
+        <h2>What closes the gap</h2>
+        <p>Hard enforcement requires a trusted component the agent cannot bypass that:</p>
+        <ul>
+          <li>verifies the signed root;</li>
+          <li>evaluates the proposed action against it;</li>
+          <li>blocks or holds the action <strong>before</strong> it executes.</li>
+        </ul>
+        <p>This is a pre-action enforcement point — not a prompt.</p>
+        <h2>What SovereignRoot provides</h2>
+        <p>SovereignRoot gives you the portable, signed, verifiable root policy. It is the <strong>ceiling</strong> that a conforming enforcement point can apply. It does not pretend to be the enforcement point itself.</p>
+        <h2>The honest takeaway</h2>
+        <p>If you want real protection, you need both: a signed root policy <em>and</em> a runtime that enforces it before actions happen. One without the other is incomplete.</p>
+        <p><a class="button primary" href="../../#generator">Create your signed root policy</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="../../"><img src="../../assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="../../protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="../../protocol/sovereignty.schema.json">JSON Schema</a><a href="../../docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="../../docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="../../README.md">Package README</a><a href="../../reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+      <div><b>Built by</b><a href="https://bryansmall.pages.dev" target="_blank" rel="noopener">Bryan Small</a><span>Applied AI builder, Scotland</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+  <script src="../../js/sovereignroot.bundle.js"></script>
+</body>
+</html>

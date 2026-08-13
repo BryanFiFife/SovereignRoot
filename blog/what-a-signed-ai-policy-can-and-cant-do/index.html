@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="What a signed sovereignty.json actually does and doesn't do for AI agent safety. An honest look at the boundary between advisory policy and hard enforcement.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="What a signed AI policy file can and can't do — SovereignRoot">
+  <meta property="og:description" content="A signed sovereignty.json is tamper-evident and portable, but it does not force a non-conforming AI to obey it. Here's the honest boundary.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/blog/what-a-signed-ai-policy-can-and-cant-do/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What a signed AI policy file can and can't do">
+  <meta name="twitter:description" content="A signed sovereignty.json is tamper-evident and portable, but it does not force a non-conforming AI to obey it.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/blog/what-a-signed-ai-policy-can-and-cant-do/">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <title>What a signed AI policy file can and can't do — SovereignRoot</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What a signed AI policy file can and can't do",
+    "description": "A signed sovereignty.json is tamper-evident and portable, but it does not force a non-conforming AI to obey it.",
+    "datePublished": "2026-08-13",
+    "publisher": {"@type": "Organization", "name": "SovereignRoot", "url": "https://sovereignroot.pages.dev/"},
+    "mainEntityOfPage": "https://sovereignroot.pages.dev/blog/what-a-signed-ai-policy-can-and-cant-do/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../../" aria-label="SovereignRoot home">
+        <img src="../../assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="../../#generator">Generator</a>
+        <a href="../../#verify">Verify</a>
+        <a href="../../#protocol">Protocol</a>
+        <a href="../../#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="eyebrow">SovereignRoot blog</div>
+        <h1>What a signed AI policy file can and can't do</h1>
+        <p class="hero-copy">A signed <code>sovereignty.json</code> is tamper-evident and portable. It is not, by itself, a security boundary. Here's the honest difference — and why that distinction matters.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <h2>The core promise</h2>
+        <p>SovereignRoot makes a human policy <strong>tamper-evident and portable</strong>. When you generate a signed <code>sovereignty.json</code>, you get a document that:</p>
+        <ul>
+          <li>carries a cryptographic signature only your key can produce;</li>
+          <li>is verifiable by any conforming runtime;</li>
+          <li>survives model, vendor, prompt, memory and delegation changes;</li>
+          <li>defines a ceiling on delegated authority — never a grant.</li>
+        </ul>
+        <h2>What it does NOT do</h2>
+        <p>A signed policy file does <strong>not</strong> force a non-conforming AI to obey it. If a runtime simply ignores the file, or an agent can bypass the enforcement point, the policy is advisory — not hard enforcement.</p>
+        <p>Hard enforcement exists only when a trusted component that the agent cannot bypass verifies and evaluates the active root <strong>before execution</strong>.</p>
+        <h2>The invariant</h2>
+        <pre>Effective authority = delegated authority ∩ SovereignRoot allowed authority</pre>
+        <p>Decision precedence: <code>DENY &gt; REQUIRE_APPROVAL &gt; ALLOW</code>. A downstream grant can never override a root deny.</p>
+        <h2>Why this honesty matters</h2>
+        <p>Too many "AI safety" products overclaim. A file that merely sits in a prompt is not enforcement. Being clear about the boundary is what makes a policy format trustworthy — and it's the only way to build real adoption.</p>
+        <p><a class="button primary" href="../../#generator">Generate your sovereignty.json</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="../../"><img src="../../assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="../../protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="../../protocol/sovereignty.schema.json">JSON Schema</a><a href="../../docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="../../docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="../../README.md">Package README</a><a href="../../reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+      <div><b>Built by</b><a href="https://bryansmall.pages.dev" target="_blank" rel="noopener">Bryan Small</a><span>Applied AI builder, Scotland</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+  <script src="../../js/sovereignroot.bundle.js"></script>
+</body>
+</html>
