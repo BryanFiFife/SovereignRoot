@@ -20,3 +20,7 @@ node_modules/
 
 # Local test artifacts
 *.log
+
+# IndexNow key (local config, not part of the product)
+indexnow-key.txt
+54a42702483911a148bd84507b2cfb43.txt
