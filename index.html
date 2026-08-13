@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" data-app-ready="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Create a signed sovereignty.json that defines the boundaries your AI agents must never cross. Free, private, local-first and vendor-neutral.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="SovereignRoot — Your rules above the AI">
+  <meta property="og:description" content="Generate a portable, cryptographically signed root policy for AI agents. Your boundaries survive vendors, models and agents.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sovereignroot.pages.dev/">
+  <meta property="og:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SovereignRoot — Your rules above the AI">
+  <meta name="twitter:description" content="Create a signed sovereignty.json. Free. Private. Local-first. Vendor-neutral.">
+  <meta name="twitter:image" content="https://sovereignroot.pages.dev/assets/og-card.png">
+  <link rel="canonical" href="https://sovereignroot.pages.dev/">
+  <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>SovereignRoot — Your rules above the AI</title>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="SovereignRoot home">
+        <img src="./assets/logo.svg" width="34" height="34" alt="">
+        <span>SovereignRoot</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#generator">Generator</a>
+        <a href="#verify">Verify</a>
+        <a href="#protocol">Protocol</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <span id="cryptoSupport" class="status-chip">Checking crypto…</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">A human-owned root policy for autonomous AI</div>
+          <h1>Your AI can change.<br><span>Your boundaries shouldn’t.</span></h1>
+          <p class="hero-copy">Create a portable, cryptographically signed <code>sovereignty.json</code> that tells compatible AI runtimes what they must never do — regardless of model, vendor, prompt, memory or delegation.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#generator">Build mine free</a>
+            <a class="button ghost" href="#protocol">How it works</a>
+          </div>
+          <div class="trust-row" aria-label="Product guarantees">
+            <span>✓ No account</span><span>✓ No upload</span><span>✓ No cookies</span><span>✓ No paid API</span>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Example policy">
+          <div class="terminal-bar"><span></span><span></span><span></span><b>sovereignty.json</b></div>
+<pre>{
+  "protocol": "SovereignRoot",
+  "semantics": {
+    "model": "deny-overrides"
+  },
+  "rules": [
+    {
+      "operation": "transmit_secret",
+      "effect": "deny"
+    },
+    {
+      "operation": "transfer_value",
+      "effect": "require_approval"
+    }
+  ],
+  "proof": {
+    "signature_algorithm": "ECDSA-P256-SHA256"
+  }
+}</pre>
+          <div class="hero-card-footer">Signed locally in your browser · nothing leaves your device</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="principle-strip">
+      <div class="wrap principle-grid">
+        <div><strong>01</strong><span>You define the ceiling</span><p>Agents can receive less authority. Never more.</p></div>
+        <div><strong>02</strong><span>Deny always wins</span><p>A downstream grant cannot override your root deny.</p></div>
+        <div><strong>03</strong><span>Your key, your policy</span><p>Only your signing identity can issue a replacement root.</p></div>
+        <div><strong>04</strong><span>Portable by design</span><p>The file belongs to you, not an AI provider.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="generator">
+      <div class="wrap narrow">
+        <div class="section-heading">
+          <div class="eyebrow">Generator</div>
+          <h2>Build your sovereignty.json</h2>
+          <p>Answer plain-English questions. SovereignRoot converts them into a signed, machine-readable root policy.</p>
+        </div>
+
+        <div class="wizard-shell">
+          <ol class="steps" aria-label="Generator progress">
+            <li data-step-indicator="1"><span>1</span><b>Baseline</b></li>
+            <li data-step-indicator="2"><span>2</span><b>Identity</b></li>
+            <li data-step-indicator="3"><span>3</span><b>Money</b></li>
+            <li data-step-indicator="4"><span>4</span><b>Data</b></li>
+            <li data-step-indicator="5"><span>5</span><b>Agents</b></li>
+            <li data-step-indicator="6"><span>6</span><b>Sign</b></li>
+            <li data-step-indicator="7"><span>7</span><b>Done</b></li>
+          </ol>
+
+          <form id="policyForm" novalidate>
+            <section data-step-panel="1" class="wizard-panel">
+              <h3>Start with a baseline</h3>
+              <p class="muted">Choose a preset, then tailor every rule. Presets never leave your browser.</p>
+              <div class="preset-grid">
+                <button type="button" class="preset" data-preset="balanced"><b>Balanced</b><span>Approval for risky actions, deny for secrets and policy tampering.</span></button>
+                <button type="button" class="preset" data-preset="strict"><b>Strict</b><span>Denies unknown, destructive and public actions by default.</span></button>
+                <button type="button" class="preset" data-preset="developer"><b>Developer</b><span>Allows shell and installs but keeps core sovereignty locks.</span></button>
+                <button type="button" class="preset" data-preset="lockdown"><b>Lockdown</b><span>Minimal autonomous authority. Most consequential actions denied.</span></button>
+              </div>
+
+              <label class="field">
+                <span>Optional name or alias</span>
+                <input type="text" name="displayName" maxlength="80" autocomplete="off" placeholder="e.g. Bryan, B.Small, Household Root">
+                <small>Optional. Leave blank for a pseudonymous key-only identity.</small>
+              </label>
+
+              <fieldset class="choice-group">
+                <legend>When an action is not covered by any rule:</legend>
+                <label><input type="radio" name="unknown" value="require_approval" checked><span><b>Ask me first</b><small>Hold the action until fresh human approval.</small></span></label>
+                <label><input type="radio" name="unknown" value="deny"><span><b>Deny it</b><small>Fail closed for anything undefined.</small></span></label>
+                <label><input type="radio" name="unknown" value="allow"><span><b>Allow it</b><small>Least restrictive. Not recommended for high-autonomy agents.</small></span></label>
+              </fieldset>
+
+              <div class="wizard-actions"><span></span><button type="button" class="button primary" data-next>Continue</button></div>
+            </section>
+
+            <section data-step-panel="2" class="wizard-panel" hidden>
+              <h3>Identity, secrets & legal authority</h3>
+              <p class="muted">These are the rules that prevent an AI from becoming “you” merely because it acts for you.</p>
+              <div class="question-grid">
+                <label class="select-field"><span>Impersonate you or claim you personally authored an AI action</span><select name="impersonation"><option value="deny">Never</option><option value="require_approval">Only with approval</option></select></label>
+                <label class="select-field"><span>Accept contracts, declarations or legal terms</span><select name="legalAcceptance"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Transmit passwords, API keys, recovery phrases or private keys</span><select name="secretExfiltration"><option value="deny">Never</option><option value="require_approval">Only with approval</option></select></label>
+                <label class="select-field"><span>Write secrets into memory, logs, prompts or ordinary files</span><select name="secretPersistence"><option value="deny">Never</option><option value="require_approval">Only with approval</option></select></label>
+              </div>
+              <div class="hard-lock"><b>Always hard-locked in v0.1:</b> an agent cannot alter the root policy, disable compliant enforcement, weaken security controls, or access the SovereignRoot signing key.</div>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Back</button><button type="button" class="button primary" data-next>Continue</button></div>
+            </section>
+
+            <section data-step-panel="3" class="wizard-panel" hidden>
+              <h3>Money & transactions</h3>
+              <p class="muted">Amounts are stored as integer minor units to avoid floating-point ambiguity.</p>
+              <div class="three-col">
+                <label class="field"><span>Currency</span><select name="currency"><option>GBP</option><option>USD</option><option>EUR</option><option>CAD</option><option>AUD</option><option>CHF</option><option>JPY</option></select></label>
+                <label class="field"><span>Approval above — single transaction</span><div class="money-input"><span>minor units</span><input name="singleSpend" inputmode="numeric" value="10000" pattern="[0-9]*"></div><small>10000 = £100.00 when currency is GBP.</small></label>
+                <label class="field"><span>Approval above — 24h aggregate</span><div class="money-input"><span>minor units</span><input name="dailySpend" inputmode="numeric" value="25000" pattern="[0-9]*"></div><small>25000 = £250.00 when currency is GBP.</small></label>
+              </div>
+              <label class="select-field"><span>Pay a new or previously unapproved recipient</span><select name="newPayee"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow within limits</option></select></label>
+              <div class="note warning"><b>Important:</b> SovereignRoot is not a bank control. A compatible trusted enforcement point must intercept the transaction before execution.</div>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Back</button><button type="button" class="button primary" data-next>Continue</button></div>
+            </section>
+
+            <section data-step-panel="4" class="wizard-panel" hidden>
+              <h3>Communication & data</h3>
+              <div class="question-grid">
+                <label class="select-field"><span>Send external email, messages or DMs</span><select name="externalComms"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Post publicly on social media, forums or websites</span><select name="publicPosting"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Delete user files, messages or records</span><select name="destructive"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Bulk-export private or personal data</span><select name="bulkExport"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+              </div>
+              <label class="field"><span>Recipients the agent must never contact</span><textarea name="blockedRecipients" rows="3" placeholder="one per line or comma separated — e.g. person@example.com"></textarea><small>Optional personal data. This remains inside the file you download; do not publish the file if it contains private identifiers.</small></label>
+              <label class="field"><span>Domains the agent must never connect to</span><textarea name="blockedDomains" rows="3" placeholder="example.com, unwanted.example"></textarea></label>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Back</button><button type="button" class="button primary" data-next>Continue</button></div>
+            </section>
+
+            <section data-step-panel="5" class="wizard-panel" hidden>
+              <h3>Agents, software & physical actions</h3>
+              <div class="question-grid">
+                <label class="select-field"><span>Install software, browser extensions, packages or persistent services</span><select name="softwareInstall"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Run shell, terminal or PowerShell commands</span><select name="shell"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+                <label class="select-field"><span>Control physical devices, locks, machinery, vehicles, cameras or microphones</span><select name="physical"><option value="require_approval">Require approval</option><option value="deny">Never</option><option value="allow">Allow</option></select></label>
+              </div>
+              <div class="toggle-row">
+                <label><input id="childAgents" type="checkbox" name="childAgents"><span><b>Allow child/sub-agents</b><small>Every child must inherit a subset of the parent’s authority. It can never escape this root.</small></span></label>
+                <label class="compact"><span>Maximum depth</span><input id="childDepth" name="childDepth" type="number" min="0" max="10" value="0" disabled></label>
+              </div>
+              <div class="formula"><span>Effective authority</span><b>delegated authority ∩ SovereignRoot allowed authority</b><small>Root deny &gt; approval &gt; downstream allow</small></div>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Back</button><button type="button" class="button primary" data-next>Continue</button></div>
+            </section>
+
+            <section data-step-panel="6" class="wizard-panel" hidden>
+              <h3>Create your signing identity</h3>
+              <p class="muted">Your browser generates an ECDSA P-256 signing key. The public key goes in <code>sovereignty.json</code>. The private key is encrypted with your passphrase before download.</p>
+              <div class="security-grid">
+                <div>
+                  <label class="field"><span>Private-key passphrase</span><input id="keyPassphrase" type="password" autocomplete="new-password" minlength="12" placeholder="12+ characters"></label>
+                  <label class="field"><span>Repeat passphrase</span><input id="keyPassphraseConfirm" type="password" autocomplete="new-password" minlength="12" placeholder="Repeat it exactly"></label>
+                  <div class="note danger"><b>There is no recovery service.</b> If you lose both your encrypted key file and passphrase, nobody can recreate that signing identity — including us.</div>
+                </div>
+                <div class="key-import-card">
+                  <h4>Already have a SovereignRoot identity?</h4>
+                  <p>Load your encrypted key bundle to keep the same cryptographic identity when issuing a replacement policy.</p>
+                  <input id="existingKeyFile" type="file" accept="application/json,.json">
+                  <input id="existingKeyPassphrase" type="password" autocomplete="off" placeholder="Existing key passphrase">
+                  <button type="button" id="loadExistingKeyBtn" class="button ghost small">Load existing key</button>
+                  <div id="existingKeyStatus" class="inline-status"></div>
+                  <hr>
+                  <h4>Link a previous policy</h4>
+                  <p>Optional. Adds the previous signed payload hash to the new policy’s continuity chain.</p>
+                  <input id="previousPolicyFile" type="file" accept="application/json,.json">
+                  <div id="previousPolicyStatus" class="inline-status"></div>
+                </div>
+              </div>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Back</button><button type="button" id="generateBtn" class="button primary">Generate &amp; sign my sovereignty.json</button></div>
+            </section>
+
+            <section data-step-panel="7" class="wizard-panel result-panel" hidden>
+              <div class="result-top">
+                <div><div class="eyebrow">Complete</div><h3>Your root policy is ready</h3><p>Download all three files. Keep the encrypted key separate from anything your agent can read.</p></div>
+                <span id="resultStatus" class="status-chip valid">Signed locally</span>
+              </div>
+              <div class="result-metrics">
+                <div><span>Rules</span><b id="resultRules">—</b></div>
+                <div><span>Hard deny</span><b id="resultDenied">—</b></div>
+                <div><span>Approval gates</span><b id="resultApproval">—</b></div>
+                <div><span>Spend gate</span><b id="resultSpend">—</b></div>
+              </div>
+              <div class="download-grid">
+                <button type="button" id="downloadPolicyBtn" class="download-card"><b>1. sovereignty.json</b><span>Your signed public root policy. Give this to compatible enforcement runtimes.</span><em>Download policy →</em></button>
+                <button type="button" id="downloadKeyBtn" class="download-card critical"><b>2. sovereignroot-key.json</b><span>Your encrypted private signing key. Keep offline and away from agents.</span><em>Download private key →</em></button>
+                <button type="button" id="downloadGuideBtn" class="download-card"><b>3. SOVEREIGNROOT-INSTALL.md</b><span>Practical instructions for users and runtime implementers.</span><em>Download instructions →</em></button>
+              </div>
+              <div class="fingerprints">
+                <div><span>Signing identity</span><code id="resultKeyId">—</code></div>
+                <div><span>Payload SHA-256</span><code id="resultHash">—</code></div>
+              </div>
+              <details class="json-details"><summary>Inspect generated JSON</summary><button type="button" id="copyJsonBtn" class="text-button">Copy JSON</button><pre id="jsonPreview"></pre></details>
+              <div class="note warning"><b>Do not confuse a signed policy with enforcement.</b> If your agent runtime does not verify and enforce this file before tool actions, it is advisory only.</div>
+              <div class="wizard-actions"><button type="button" class="button ghost" data-back>Edit policy</button><button type="button" id="copyGuideBtn" class="button ghost">Copy install instructions</button></div>
+            </section>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="verify">
+      <div class="wrap split">
+        <div>
+          <div class="eyebrow">Independent verification</div>
+          <h2>Trust the signature, not the website.</h2>
+          <p>Drop any SovereignRoot <code>sovereignty.json</code> here. Verification happens locally using the public key embedded in the document.</p>
+          <label class="dropbox">
+            <input id="verifyFile" type="file" accept="application/json,.json">
+            <span class="drop-icon">⇩</span>
+            <b>Choose sovereignty.json</b>
+            <small>No upload. The browser reads the file locally.</small>
+          </label>
+        </div>
+        <div id="verifyResult" class="verify-output idle">
+          <div class="verify-title">Ready to verify</div>
+          <p>We check the RFC 8785 canonical payload, SHA-256 digest, key identity and ECDSA P-256 signature.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="protocol">
+      <div class="wrap">
+        <div class="section-heading left">
+          <div class="eyebrow">The protocol model</div>
+          <h2>A ceiling above every grant.</h2>
+          <p>SovereignRoot does not replace OAuth, agent identity or task authorization. It gives those systems a human-owned upper bound they are not allowed to exceed.</p>
+        </div>
+        <div class="stack-diagram" aria-label="SovereignRoot authority stack">
+          <div class="layer human"><span>Human holder</span><b>Signs the root constraint document</b></div>
+          <div class="arrow">↓</div>
+          <div class="layer root"><span>SovereignRoot</span><b>Persistent deny / approval ceiling</b></div>
+          <div class="arrow">↓ intersects with ↓</div>
+          <div class="layer auth"><span>OAuth · AIP · DRP · agent grants</span><b>Task-specific delegated authority</b></div>
+          <div class="arrow">↓</div>
+          <div class="layer runtime"><span>Trusted enforcement point</span><b>Verify → normalize → evaluate → allow / hold / deny</b></div>
+          <div class="arrow">↓</div>
+          <div class="layer action"><span>Tool / API / device / transaction</span><b>Execution only after policy passes</b></div>
+        </div>
+        <div class="protocol-cards">
+          <article><h3>Non-derogation</h3><p>No prompt, memory, delegated token or child agent can override a root deny.</p></article>
+          <article><h3>Attenuation only</h3><p>Delegation may narrow authority. It may not amplify it beyond the parent or root.</p></article>
+          <article><h3>Cryptographic continuity</h3><p>Replacement policies are signed by the same human-owned identity and may link to the previous payload hash.</p></article>
+          <article><h3>Fail honestly</h3><p>If there is no trusted pre-action enforcement point, the file must be described as advisory — never as a security boundary.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section privacy-section">
+      <div class="wrap split privacy-grid">
+        <div>
+          <div class="eyebrow">Privacy by architecture</div>
+          <h2>We designed the website so it doesn’t need your data.</h2>
+        </div>
+        <div class="privacy-list">
+          <div><b>No backend</b><span>There is nowhere for your answers to be submitted.</span></div>
+          <div><b>No analytics</b><span>No trackers, pixels, cookies or third-party scripts.</span></div>
+          <div><b>No cloud key custody</b><span>Your private signing key is generated and encrypted locally.</span></div>
+          <div><b>Self-hostable</b><span>The complete site is static and can run on Cloudflare Pages, GitHub Pages or any ordinary web server.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap narrow">
+        <div class="section-heading"><div class="eyebrow">FAQ</div><h2>What this is — and what it isn’t.</h2></div>
+        <div class="faq-list">
+          <details open><summary>Can sovereignty.json force ChatGPT, Claude or another hosted AI to obey it?</summary><p>Not by itself. A signed file only becomes enforceable when a trusted runtime, proxy, operating-system boundary or service verifies it before the AI action executes. Pasting it into a model prompt is useful as an instruction but is not equivalent to hard enforcement.</p></details>
+          <details><summary>Does SovereignRoot store my answers or key?</summary><p>No. The distributed website contains no backend or submission endpoint. Generation, encryption, signing and verification happen in your browser. You control the files that are downloaded.</p></details>
+          <details><summary>What if an agent has broader OAuth permissions?</summary><p>A conforming enforcement implementation intersects delegated authority with the SovereignRoot ceiling. A downstream grant cannot turn a root deny into an allow.</p></details>
+          <details><summary>What happens if I lose the private signing key?</summary><p>You can still use and verify the existing policy, but you lose cryptographic continuity for future replacement policies. Keep at least two offline backups of the encrypted key file and separately preserve the passphrase.</p></details>
+          <details><summary>Should I put API keys or recovery phrases inside sovereignty.json?</summary><p>No. Never place secrets in the policy. Rules may refer to secret classes, but actual passwords, private keys, tokens, seed phrases and recovery codes should remain outside the document.</p></details>
+          <details><summary>Is this an official internet standard?</summary><p>No. SovereignRoot v0.1 is an open working specification and reference implementation. It deliberately builds on established cryptographic and JSON standards, but the policy format itself is not an IETF, W3C or NIST standard.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="wrap cta-inner"><div><h2>Give your AI a ceiling.</h2><p>Models will get more capable. Your root boundaries should remain yours.</p></div><a class="button primary light" href="#generator">Create sovereignty.json</a></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><a class="brand" href="#top"><img src="./assets/logo.svg" width="30" height="30" alt=""><span>SovereignRoot</span></a><p>Human-owned boundaries for autonomous AI.</p></div>
+      <div><b>Protocol</b><a href="./protocol/SOVEREIGNROOT-SPEC.md">Specification</a><a href="./protocol/sovereignty.schema.json">JSON Schema</a><a href="./docs/SECURITY.md">Security model</a></div>
+      <div><b>Deploy</b><a href="./docs/DEPLOY_CLOUDFLARE.md">Cloudflare Pages</a><a href="./README.md">Package README</a><a href="./reference/README.md">Reference code</a></div>
+      <div><b>Status</b><span>Working Draft v0.1.0</span><span>Static · local-first</span><span>Open source</span></div>
+    </div>
+    <div class="wrap footer-bottom">SovereignRoot is a technical policy format, not legal advice, financial advice, or a guarantee of AI safety.</div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./js/sovereignroot.bundle.js"></script>
+</body>
+</html>

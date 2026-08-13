@@ -1,0 +1,197 @@
+{
+  "protocol": "SovereignRoot",
+  "version": "0.1.0",
+  "document_type": "sovereignty-root",
+  "created_at": "2026-08-13T01:37:17.507Z",
+  "subject": {
+    "id": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:67a8YKavYTYcXqlbjSOKPcHZCsQhiuL0_dZs0JTW58Y",
+    "display_name": "Example Holder"
+  },
+  "semantics": {
+    "model": "deny-overrides",
+    "unknown_action": "require_approval",
+    "non_derogation": true,
+    "default_inheritance": "attenuation-only",
+    "effective_authority": "delegated_authority INTERSECT root_allowed_authority",
+    "note": "A grant from any downstream authorization system cannot override a SovereignRoot deny."
+  },
+  "lifecycle": {
+    "previous_payload_sha256": null,
+    "replacement_requires_holder_signature": true,
+    "agent_self_amendment": false
+  },
+  "rules": [
+    {
+      "id": "root.policy.modify",
+      "category": "governance",
+      "operation": "modify_root_policy",
+      "effect": "deny",
+      "description": "An agent may never alter, weaken, replace, disable, or bypass this root policy."
+    },
+    {
+      "id": "root.enforcement.disable",
+      "category": "governance",
+      "operation": "disable_enforcement",
+      "effect": "deny",
+      "description": "An agent may never disable or evade a compliant SovereignRoot enforcement point."
+    },
+    {
+      "id": "root.signing-key.access",
+      "category": "governance",
+      "operation": "access_signing_key",
+      "effect": "deny",
+      "description": "An agent may never request, reveal, export, transmit, or use the holder private signing key."
+    },
+    {
+      "id": "identity.impersonate",
+      "category": "identity",
+      "operation": "impersonate_holder",
+      "effect": "deny",
+      "description": "Do not impersonate the holder or claim the holder personally performed an AI-generated action."
+    },
+    {
+      "id": "identity.legal-acceptance",
+      "category": "identity",
+      "operation": "accept_legal_terms",
+      "effect": "require_approval",
+      "description": "Legal terms, contracts, declarations, or attestations require the configured human decision."
+    },
+    {
+      "id": "secrets.exfiltrate",
+      "category": "secrets",
+      "operation": "transmit_secret",
+      "effect": "deny",
+      "description": "Credentials, recovery phrases, private keys, tokens and passwords must not be disclosed or transmitted."
+    },
+    {
+      "id": "secrets.persist",
+      "category": "secrets",
+      "operation": "persist_secret",
+      "effect": "deny",
+      "description": "Secrets must not be written into long-term memory, logs, prompts, notes, or ordinary files."
+    },
+    {
+      "id": "data.delete",
+      "category": "data",
+      "operation": "delete_data",
+      "effect": "require_approval",
+      "description": "Deletion of user data follows the configured destructive-action policy."
+    },
+    {
+      "id": "data.bulk-export",
+      "category": "data",
+      "operation": "bulk_export",
+      "effect": "require_approval",
+      "description": "Bulk export of personal or private data requires the configured decision."
+    },
+    {
+      "id": "communication.external-send",
+      "category": "communications",
+      "operation": "send_external",
+      "effect": "require_approval",
+      "description": "Sending messages to external recipients follows the configured communication policy."
+    },
+    {
+      "id": "communication.public-publish",
+      "category": "communications",
+      "operation": "publish_public",
+      "effect": "require_approval",
+      "description": "Public posting, commenting, publishing, or broadcasting follows the configured policy."
+    },
+    {
+      "id": "system.install",
+      "category": "system",
+      "operation": "install_software",
+      "effect": "require_approval",
+      "description": "Installing software, extensions, packages, services, or persistent components follows the configured policy."
+    },
+    {
+      "id": "system.shell",
+      "category": "system",
+      "operation": "execute_shell",
+      "effect": "require_approval",
+      "description": "Shell, terminal, PowerShell, or equivalent command execution follows the configured policy."
+    },
+    {
+      "id": "system.security-controls",
+      "category": "system",
+      "operation": "modify_security_controls",
+      "effect": "deny",
+      "description": "Do not weaken firewalls, EDR, antivirus, access control, sandboxing, audit, or other security controls."
+    },
+    {
+      "id": "physical.control",
+      "category": "physical",
+      "operation": "control_physical_device",
+      "effect": "require_approval",
+      "description": "Actions affecting physical devices, vehicles, locks, machinery, cameras or microphones follow the configured policy."
+    },
+    {
+      "id": "agents.spawn",
+      "category": "delegation",
+      "operation": "spawn_child_agent",
+      "effect": "deny",
+      "description": "Child-agent creation follows the holder policy.",
+      "conditions": {
+        "max_depth": 0,
+        "must_attenuate": true
+      }
+    },
+    {
+      "id": "agents.authority-amplification",
+      "category": "delegation",
+      "operation": "amplify_authority",
+      "effect": "deny",
+      "description": "No child, delegated agent, tool, model, or derived context may obtain authority exceeding its parent or this root."
+    },
+    {
+      "id": "finance.new-payee",
+      "category": "finance",
+      "operation": "pay_new_recipient",
+      "effect": "require_approval",
+      "description": "Payments to a new or previously unapproved recipient follow the configured policy."
+    },
+    {
+      "id": "finance.single-limit",
+      "category": "finance",
+      "operation": "transfer_value",
+      "effect": "require_approval",
+      "description": "Transactions above the holder-defined single-transaction ceiling require explicit approval.",
+      "conditions": {
+        "currency": "GBP",
+        "amount_minor_gt": "10000"
+      }
+    },
+    {
+      "id": "finance.daily-limit",
+      "category": "finance",
+      "operation": "transfer_value",
+      "effect": "require_approval",
+      "description": "Aggregate daily spending above the holder-defined ceiling requires explicit approval.",
+      "conditions": {
+        "currency": "GBP",
+        "aggregate_24h_minor_gt": "25000"
+      }
+    }
+  ],
+  "public_key": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "sz8Z4Cl7_CLnmI59OlM2SB9kjYwY5OIfWz2ooLe3iK8",
+    "y": "WeEaAION8_0Ao-LGAbdwSb8FG9fg5ZaGVotokfdk_oM",
+    "alg": "ES256",
+    "key_ops": [
+      "verify"
+    ],
+    "ext": true
+  },
+  "proof": {
+    "type": "SovereignRootProof",
+    "canonicalization": "RFC8785-JCS",
+    "hash": "SHA-256",
+    "signature_algorithm": "ECDSA-P256-SHA256",
+    "key_id": "urn:ietf:params:oauth:jwk-thumbprint:sha-256:67a8YKavYTYcXqlbjSOKPcHZCsQhiuL0_dZs0JTW58Y",
+    "payload_sha256": "pzp_lOhmH1TmmYrcRqMc2JkU3tk4m-0XygD7nF0ikOE",
+    "signature": "gz17FgDm9pPr4dZOAtH2dLhwiAI2Ya9AXKlDuzWBfOdekJTMalb_uI4mMPSGT6xMHT0M36ph9dlkOx6TxVGlRg"
+  }
+}

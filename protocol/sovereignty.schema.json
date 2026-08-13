@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sovereignroot.pages.dev/protocol/sovereignty.schema.json",
+  "title": "SovereignRoot sovereignty.json",
+  "description": "Working Draft schema for a human-owned root constraint policy for autonomous AI systems.",
+  "type": "object",
+  "required": ["protocol", "version", "document_type", "created_at", "subject", "semantics", "lifecycle", "rules", "public_key", "proof"],
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {"const": "SovereignRoot"},
+    "version": {"type": "string", "pattern": "^0\\.1\\.[0-9]+$"},
+    "document_type": {"const": "sovereignty-root"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "subject": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^urn:ietf:params:oauth:jwk-thumbprint:sha-256:"},
+        "display_name": {"type": "string", "minLength": 1, "maxLength": 80}
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "required": ["model", "unknown_action", "non_derogation", "default_inheritance", "effective_authority", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "model": {"const": "deny-overrides"},
+        "unknown_action": {"enum": ["deny", "require_approval", "allow"]},
+        "non_derogation": {"const": true},
+        "default_inheritance": {"const": "attenuation-only"},
+        "effective_authority": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["previous_payload_sha256", "replacement_requires_holder_signature", "agent_self_amendment"],
+      "additionalProperties": false,
+      "properties": {
+        "previous_payload_sha256": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9_-]{43}$"},
+        "replacement_requires_holder_signature": {"const": true},
+        "agent_self_amendment": {"const": false}
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/rule"}
+    },
+    "public_key": {"$ref": "#/$defs/publicKey"},
+    "proof": {"$ref": "#/$defs/proof"}
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "required": ["id", "category", "operation", "effect", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 120},
+        "category": {"type": "string", "minLength": 1, "maxLength": 60},
+        "operation": {"type": "string", "minLength": 1, "maxLength": 120},
+        "effect": {"enum": ["deny", "require_approval", "allow"]},
+        "description": {"type": "string", "minLength": 1, "maxLength": 600},
+        "conditions": {"type": "object", "additionalProperties": true}
+      }
+    },
+    "publicKey": {
+      "type": "object",
+      "required": ["kty", "crv", "x", "y", "alg", "key_ops", "ext"],
+      "additionalProperties": false,
+      "properties": {
+        "kty": {"const": "EC"},
+        "crv": {"const": "P-256"},
+        "x": {"type": "string", "minLength": 43, "maxLength": 43},
+        "y": {"type": "string", "minLength": 43, "maxLength": 43},
+        "alg": {"const": "ES256"},
+        "key_ops": {"type": "array", "const": ["verify"]},
+        "ext": {"const": true}
+      }
+    },
+    "proof": {
+      "type": "object",
+      "required": ["type", "canonicalization", "hash", "signature_algorithm", "key_id", "payload_sha256", "signature"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"const": "SovereignRootProof"},
+        "canonicalization": {"const": "RFC8785-JCS"},
+        "hash": {"const": "SHA-256"},
+        "signature_algorithm": {"const": "ECDSA-P256-SHA256"},
+        "key_id": {"type": "string", "pattern": "^urn:ietf:params:oauth:jwk-thumbprint:sha-256:"},
+        "payload_sha256": {"type": "string", "pattern": "^[A-Za-z0-9_-]{43}$"},
+        "signature": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"}
+      }
+    }
+  }
+}

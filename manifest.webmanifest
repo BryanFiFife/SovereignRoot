@@ -1,0 +1,10 @@
+{
+  "name": "SovereignRoot",
+  "short_name": "SovereignRoot",
+  "description": "Create and verify a signed human-owned root policy for autonomous AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": [{"src":"./assets/logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
