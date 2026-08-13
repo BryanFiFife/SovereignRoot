@@ -415,7 +415,8 @@ const state = {
   privateKey: null,
   publicJwk: null,
   previousHash: null,
-  previousKeyId: null
+  previousKeyId: null,
+  _userInteracted: false
 };
 
 function toast(message, kind = 'info') {
@@ -435,7 +436,10 @@ function setStep(step) {
     ind.classList.toggle('active', n === state.step);
     ind.classList.toggle('done', n < state.step);
   });
-  $('#generator')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Only scroll to the generator on USER interaction, not on initial page load.
+  if (state._userInteracted) {
+    $('#generator')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function setFormValue(name, value) {
@@ -669,6 +673,10 @@ function init() {
   featureDetect();
   registerServiceWorker();
   document.documentElement.dataset.appReady = 'true';
+  // Mark the first real user interaction so setStep only scrolls on demand.
+  const mark = () => { state._userInteracted = true; };
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(evt =>
+    document.addEventListener(evt, mark, { once: true, passive: true }));
 }
 
 init();
