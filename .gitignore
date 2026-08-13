@@ -15,5 +15,8 @@ venv/
 # Node
 node_modules/
 
+# Wrangler / Cloudflare local cache
+.wrangler/
+
 # Local test artifacts
 *.log
