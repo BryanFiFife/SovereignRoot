@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://sovereignroot.pages.dev/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://sovereignroot.pages.dev/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sovereignroot.pages.dev/blog/ai-agent-authorization-grant-and-ceiling/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://sovereignroot.pages.dev/blog/what-a-signed-ai-policy-can-and-cant-do/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://sovereignroot.pages.dev/blog/how-to-define-ai-agent-boundaries/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://sovereignroot.pages.dev/blog/prompt-injection-policy-files-enforcement-gap/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
